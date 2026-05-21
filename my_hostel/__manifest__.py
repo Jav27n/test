@@ -2,7 +2,7 @@
     'name': "Hostel Management",
     'summary': "Manage Hostel easily",
     'description': "Efficiently manage the entire residential facility in the school.", # Supports reStructuredText(RST) format (description is Deprecated),
-    'author': "Your name",
+    'author': "Javeria",
     'category': 'Uncategorized',
     'license': 'LGPL-3',
     'version': '18.0.1.0.0',
