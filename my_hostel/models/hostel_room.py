@@ -37,6 +37,8 @@ class HostelRoom(models.Model):
 
     previous_room_id = fields.Many2one('hostel.room', string='Previous Room')
 
+    remarks = fields.Text('Remarks')
+
     _sql_constraints = [("room_no_unique", "unique(room_num)", "Room number must be unique!")]
 
     @api.constrains("rent_amount")
@@ -180,3 +182,27 @@ class HostelRoom(models.Model):
     #     return super(HostelRoom, self)._name_search(
     #         name=name, args=args, operator=operator,
     #         limit=limit, name_get_uid=name_get_uid)
+
+    @api.model_create_multi
+    def create(self, values):
+        if not self.env.user.has_groups('my_hostel.group_hostel_manager'):
+            for val in values:
+                if val.get('remarks'):
+                    raise UserError(
+                        'You are not allowed to modify '
+                        'remarks'
+                    )
+        return super(HostelRoom, self).create(values)
+
+    def write(self, values):
+        if not self.env.user.has_groups('my_hostel.group_hostel_manager'):
+            if values.get('remarks'):
+                raise UserError(
+                    'You are not allowed to modify '
+                    'manager_remarks'
+                )
+        return super(HostelRoom, self).write(values)
+
+    def action_remove_room_members(self):
+        for student in self.student_ids:
+            student.with_context(is_hostel_room=True).action_remove_room()

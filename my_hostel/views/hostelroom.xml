@@ -45,6 +45,7 @@
                                 <field name="student_per_room"/>
                                 <field name="availability"/>
                                 <button name="action_get_average_cost" string="Get Average Cost" type="object"/>
+                                <field name="remarks"/>
                             </group>
 
                             <group>
@@ -56,6 +57,12 @@
                                 <button name="filter_members" string="Filter Members" type="object"/>
                                 <button name="filter_members_1" string="Get Student Names" type="object"/>
                                 <button name="filter_members_2" string="Sorted by Room Number" type="object"/>
+                            </group>
+
+                            <group>
+                                <button name="action_remove_room_members"
+                                        string="Remove Room Members" type="object"
+                                        class="btn-primary" />
                             </group>
 
                         </group>
