@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_room_hostel" model="ir.actions.act_window">
+        <field name="name">Hostel Room</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hostel.room</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create Hostel Room.
+            </p>
+        </field>
+    </record>
+
+    <!--    <menuitem id="hostel_room_main_menu" name="Hostel Room" sequence="1"/>-->
+
+    <menuitem id="hostel_room_menu" name="Hostel Room" parent="my_hostel.hostel_main_menu"
+              action="my_hostel.action_room_hostel" groups="my_hostel.group_hostel_manager"
+              sequence="1"/>
+
+    <record id="view_hostel_room_form_view" model="ir.ui.view">
+        <field name="name">hostel.room.form.view</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <form string="Hostel Room">
+                <sheet>
+                    <h3>
+                        <group>
+
+                            <group>
+                                <field name="name"/>
+                                <field name="room_num"/>
+                                <field name="floor_num"/>
+                                <field name="rent_amount"/>
+                                <field name="currency_id"/>
+                                <field name="previous_room_id" />
+                            </group>
+
+                            <group>
+                                <field name="hostel_id"/>
+                                <field name="category_id"/>
+                                <field name="hostel_amenities_ids" widget="many2many_tags"/>
+                                <field name="student_ids"/>
+                                <field name="student_per_room"/>
+                                <field name="availability"/>
+                                <button name="action_get_average_cost" string="Get Average Cost" type="object"/>
+                            </group>
+
+                            <group>
+                                <button name="make_available" string="Make Available" type="object"/>
+                                <button name="make_closed" string="Make Borrowed" type="object"/>
+                                <field name="state" widget="statusbar"/>
+                                <button name="update_room_no" string="Update Room No" type="object"/>
+                                <button name="find_room" string="Find Room" type="object"/>
+                                <button name="filter_members" string="Filter Members" type="object"/>
+                                <button name="filter_members_1" string="Get Student Names" type="object"/>
+                                <button name="filter_members_2" string="Sorted by Room Number" type="object"/>
+                            </group>
+
+                        </group>
+                    </h3>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_hostel_room_list_view" model="ir.ui.view">
+        <field name="name">hostel.room.list.view</field>
+        <field name="model">hostel.room</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+            </list>
+        </field>
+    </record>
+
+</odoo>

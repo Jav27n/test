@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="hostel_detail_reports_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.internal_layout">
+
+                    <div class="page">
+                        <h1>Hostel Name:
+                            <t t-esc="doc.name"/>
+                        </h1>
+                        <h1>Hostel Code:
+                            <t t-esc="doc.hostel_code"/>
+                        </h1>
+                        <table class="table table-condensed">
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        Address
+                                    </td>
+                                    <td>
+                                        <t t-esc="street"/>
+                                    </td>
+                                    <td>
+                                        Phone
+                                    </td>
+                                    <td>
+                                        <t t-esc="phone"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="street2"/>
+                                    </td>
+                                    <td>
+                                        Mobile
+                                    </td>
+                                    <td>
+                                        <t t-esc="mobile"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <t t-esc="city"/>
+                                        <t t-esc="state_id"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="zip"/>
+                                    </td>
+                                    <td>
+                                        Email
+                                    </td>
+                                    <td>
+                                        <t t-esc="email"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <t t-esc="country_id"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Total Floors
+                                    </td>
+                                    <td>
+                                        <t t-esc="hostel_floors"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Active
+                                    </td>
+                                    <td>
+                                        <t t-esc="active"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Type
+                                    </td>
+                                    <td>
+                                        <t t-esc="type"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Hostel Average Rating
+                                    </td>
+                                    <td>
+                                        <t t-esc="hostel_rating"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Other Information
+                                    </td>
+                                    <td>
+                                        <t t-esc="other_info"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Description
+                                    </td>
+                                    <td>
+                                        <t t-esc="description"/>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
