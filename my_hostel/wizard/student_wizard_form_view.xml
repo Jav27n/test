@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+        <record id="action_student_wizard_form" model="ir.actions.act_window">
+            <field name="name">Demo Wizard</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">student.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    lets learn odoo
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_student_wizard" name="Wizard" action="action_student_wizard_form"
+                  parent="my_hostel.hostel_main_menu"/>
+
+        <record id="view_student_wizard_form" model="ir.ui.view">
+            <field name="name">student.wizard.form.view</field>
+            <field name="model">student.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Wizard">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string='Print Report' name="action_print_report" type="object" class="btn-primary" data-hotkey="q"/>
+                        <button string="Discard" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+
+                </form>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>
