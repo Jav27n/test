@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="report_hostel_student_detail" model="ir.actions.report">
+        <field name="name">hostel student detail report</field>
+        <field name="model">hostel.student</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="binding_model_id" ref="model_hostel_student"/>
+        <field name="report_name">my_hostel.hostel_student_detail_reports_template</field>
+        <field name="report_file">my_hostel.hostel_student_detail_reports_template</field>
+    </record>
+
+    <template id="hostel_student_detail_reports_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+
+                    <div class="page">
+
+                        <table class="table table-sm table-borderless">
+
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        Student Name:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.name"/>
+                                    </td>
+
+                                    <td>
+                                        Admission Date:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.admission_date"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Gender:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.gender"/>
+                                    </td>
+
+                                    <td>
+                                        Discharge Date:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.discharge_date"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Active:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.active"/>
+                                    </td>
+
+                                    <td>
+                                        Duration:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.duration"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Room:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.room_id.name"/>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        Hostel:
+                                    </td>
+                                    <td>
+                                        <t t-esc="doc.hostel_id.name"/>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </t>
+            </t>
+        </t>
+
+    </template>
+
+</odoo>
+
