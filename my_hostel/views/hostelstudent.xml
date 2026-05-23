@@ -13,7 +13,7 @@
         </field>
     </record>
 
-<!--    <menuitem id="hostel_student_main_menu" name="Hostel Student" sequence="4"/>-->
+    <!--    <menuitem id="hostel_student_main_menu" name="Hostel Student" sequence="4"/>-->
 
     <menuitem id="hostel_student_sub_menu" name="Hostel Student" parent="my_hostel.hostel_main_menu"
               action="my_hostel.action_hostel_student" groups="my_hostel.group_hostel_manager"
@@ -24,6 +24,12 @@
         <field name="model">hostel.student</field>
         <field name="arch" type="xml">
             <form string="Hostel Student">
+                <header>
+                    <button string="Assign Room" type="action"
+                            name="%(my_hostel.action_assign_room_student_wizard)d"
+                            class="btn-primary"/>
+                </header>
+
                 <sheet>
                     <h3>
                         <group>
@@ -43,15 +49,15 @@
 
                             <group>
                                 <field name="room_id"/>
-<!--                                <field name="contact_address"/>-->
+                                <!--                                <field name="contact_address"/>-->
                                 <field name="hostel_id"/>
                             </group>
 
-                            <group>
-<!--                                <field name="hostel_id_1" />-->
-                                <button name="action_assign_room" string="Assign Room"
-                                        type="object" class="btn-primary"/>
-                            </group>
+                            <!--                            <group>-->
+                            <!--                                <field name="hostel_id_1" />-->
+                            <!--                                <button name="action_assign_room" string="Assign Room"-->
+                            <!--                                        type="object" class="btn-primary"/>-->
+                            <!--                            </group>-->
 
                         </group>
                     </h3>

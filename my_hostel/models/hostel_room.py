@@ -2,6 +2,10 @@ from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 from odoo.exceptions import UserError
 from odoo.tools.translate import _
+import logging
+from odoo.tests.common import Form
+
+_logger = logging.getLogger(__name__)
 
 class HostelRoom(models.Model):
     _name = 'hostel.room'
@@ -206,3 +210,29 @@ class HostelRoom(models.Model):
     def action_remove_room_members(self):
         for student in self.student_ids:
             student.with_context(is_hostel_room=True).action_remove_room()
+
+    def action_category_with_amount(self):
+        self.env.cr.execute(
+        """
+        SELECT
+        hrc.name,
+        hostel_room.rent_amount
+        FROM
+        hostel_room AS hostel_room
+        JOIN
+        hostel_room_category as hrc ON hrc.id =
+        hostel_room.category_id
+        WHERE hostel_room.category_id = %(cate_id)s;
+        """,
+        {'cate_id': self.category_id.id}
+        )
+        result = self.env.cr.fetchall()
+        _logger.warning("Hostel Room With Amount: %s", result)
+
+    def return_room(self):
+        self.ensure_one()
+        wizard = self.env['assign.room.student.wizard']
+        with Form(wizard) as return_form:
+            return_form.room_id = self
+            record = return_form.save()
+            record.with_context(active_id=self.id).add_room_in_student()

@@ -24,6 +24,11 @@
         <field name="model">hostel.room</field>
         <field name="arch" type="xml">
             <form string="Hostel Room">
+                <header>
+                    <button string="Return Room" type="object"
+                            name="return_room" class="btn-primary"/>
+                </header>
+
                 <sheet>
                     <h3>
                         <group>
@@ -34,7 +39,7 @@
                                 <field name="floor_num"/>
                                 <field name="rent_amount"/>
                                 <field name="currency_id"/>
-                                <field name="previous_room_id" />
+                                <field name="previous_room_id"/>
                             </group>
 
                             <group>
@@ -62,7 +67,10 @@
                             <group>
                                 <button name="action_remove_room_members"
                                         string="Remove Room Members" type="object"
-                                        class="btn-primary" />
+                                        class="btn-primary"/>
+                                <button name="action_category_with_amount"
+                                        string="Log Category With Amount" type="object"
+                                        class="btn-primary"/>
                             </group>
 
                         </group>

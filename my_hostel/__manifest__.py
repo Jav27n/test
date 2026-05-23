@@ -24,7 +24,8 @@
         'reports/hostel_detail_report_template.xml',
         'reports/hs_student_report.xml',
         'reports/hs_amenities_report.xml',
-        'wizard/student_wizard_form_view.xml'
+        'wizard/student_wizard_form_view.xml',
+        'wizard/assign_room_student_wizard_form_view.xml'
     ],
     'demo': ['demo.xml'],
 }
