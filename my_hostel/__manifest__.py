@@ -6,7 +6,10 @@
     'author': "Javeria",
     'license': 'LGPL-3',
     'version': '18.0.1.0.0',
-    'depends': ['base'],
+    'depends': ['base', 'base_setup'],
+
+    'post_init_hook': 'add_room_hook',
+
     'application': True,
     'data': [
         'security/hostel_security.xml',
@@ -18,6 +21,8 @@
         'views/hostelstudent.xml',
         'views/hostelcategory.xml',
         'views/hostel_room_category.xml',
+        'views/hostel_room_availability_view.xml',
+        'views/res_config_settings.xml',
         'reports/hostel_room_detail_report.xml',
         'reports/hostel_room_detail_report_template.xml',
         'reports/hostel_detail_report.xml',
